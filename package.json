@@ -1,0 +1,28 @@
+{
+  "name": "fast-js",
+  "version": "1.0.0",
+  "description": "Writing Fast JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alsotang/fast-js.git"
+  },
+  "keywords": [
+    "fast",
+    "performance",
+    "benchmark"
+  ],
+  "author": "alsotang <alsotang@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alsotang/fast-js/issues"
+  },
+  "homepage": "https://github.com/alsotang/fast-js#readme",
+  "dependencies": {
+    "lodash": "~3.10.1",
+    "matcha": "~0.6.0"
+  }
+}
