@@ -12,3 +12,8 @@
 # benchmark
 
 <%= benchmark_result %>
+
+# contribute
+
+1. add your test to `benchmark` dir
+1. run `$ make build` and it will update README.md including new test
