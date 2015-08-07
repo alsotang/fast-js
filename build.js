@@ -18,7 +18,7 @@ allBenchmarks = allBenchmarks.filter(function (fileName) {
 
 var benchmarkBlockTemplate = _.template(multiline(function () {
 /*
-[code](benchmark/<%= filename %>)
+[<%= filename %>](benchmark/<%= filename %>)
 
 ```
 <%= benchmark_result %>
