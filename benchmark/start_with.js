@@ -15,4 +15,5 @@ suite('start_with', function () {
   bench('lodash.startsWith', function () {
     _.startsWith(str, 'ab');
   })
+
 })
