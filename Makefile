@@ -1,9 +1,12 @@
 all: benchmark
 
-benchmark:
+install:
+	@npm install
+
+benchmark: install
 	@./node_modules/.bin/matcha
 
-build:
+build: install
 	@./build.js
 
-.PHONY: all benchmark build
+.PHONY: all install benchmark build
