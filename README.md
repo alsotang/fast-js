@@ -27,8 +27,8 @@ arguments_to_array
 ```
 clone_object
   JSON.parse(JSON.stringify) ..................... 192,176 op/s
-  _.cloneDeep .................................... 151,387 op/s
-  _.clone. this is shadow clone .................. 918,130 op/s
+  lodash.cloneDeep .................................... 151,387 op/s
+  lodash.clone. this is shadow clone .................. 918,130 op/s
 ```
 
 [for_loop.js](benchmark/for_loop.js)

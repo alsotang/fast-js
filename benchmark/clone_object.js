@@ -23,11 +23,11 @@ suite('clone_object', function () {
     var obj2 = JSON.parse(JSON.stringify(obj1))
   })
 
-  bench('_.cloneDeep', function () {
+  bench('lodash.cloneDeep', function () {
     var obj2 = _.cloneDeep(obj1);
   })
 
-  bench('_.clone. this is shadow clone', function () {
+  bench('lodash.clone. this is shadow clone', function () {
     var obj2 = _.clone(obj1);
   })
 })
