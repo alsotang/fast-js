@@ -1,3 +1,5 @@
+// perhaps microbenchmarking here make no sense
+// can anyone provide a more meaningful cases?
 
 function withoutHiddenClass() {
 
