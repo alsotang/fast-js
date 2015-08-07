@@ -8,10 +8,10 @@ var matchaCommand = path.join(__dirname, './node_modules/.bin/matcha');
 var multiline = require('multiline');
 
 var benchmarkDir = path.join(__dirname, 'benchmark');
-var allBenchmarks = fs.readdirSync(benchmarkDir);
 var readmeTemplate = _.template(fs.readFileSync(path.join(__dirname, 'README.template'), 'utf-8'));
 var readmeLocate = path.join(__dirname, 'README.md');
 
+var allBenchmarks = fs.readdirSync(benchmarkDir);
 allBenchmarks = allBenchmarks.filter(function (fileName) {
   return _.endsWith(fileName, '.js');
 });
