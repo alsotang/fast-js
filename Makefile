@@ -1,6 +1,9 @@
 all: benchmark
 
 benchmark:
-	./node_modules/.bin/matcha
+	@./node_modules/.bin/matcha
 
-.PHONY: all benchmark
+build:
+	@./build.js
+
+.PHONY: all benchmark build
