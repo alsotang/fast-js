@@ -14,7 +14,7 @@ suite('str_concat', function () {
     c += longstrb;
   })
 
-  bench('.join("")', function () {
+  bench('arr.join("")', function () {
     var c = [longstra, longstrb].join('')
   })
 
