@@ -4,11 +4,11 @@ var str = 'abcd';
 
 suite('start_with', function () {
 
-  bench('regex', function () {
+  bench('regex /^ab/', function () {
     /^ab/.test(str);
   });
 
-  bench('indexOf', function () {
+  bench('indexOf === 0', function () {
     str.indexOf('ab') === 0
   })
 
