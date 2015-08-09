@@ -23,6 +23,7 @@
   "homepage": "https://github.com/alsotang/fast-js#readme",
   "dependencies": {
     "lodash": "3.10.1",
-    "matcha": "0.6.0"
+    "matcha": "0.6.0",
+    "multiline": "1.0.2"
   }
 }
