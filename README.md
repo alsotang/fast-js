@@ -11,6 +11,14 @@
 
 # benchmark
 
+[sample_from_array.js](benchmark/sample_from_array.js)
+
+```
+sample_from_array
+  Math.random % arr.length ....................... 1,197,742 op/s
+  lodash.sample .................................. 15,908,966 op/s
+```
+
 [uniq_str_array.js](benchmark/uniq_str_array.js)
 
 ```
