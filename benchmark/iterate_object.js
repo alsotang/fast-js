@@ -10,10 +10,9 @@ suite('iterate_object', function () {
   })
 
   bench('Object.keys', function () {
-    var keys = Object.keys(obj)
-    for (var i = 0; i < keys.length; i++) {
-      obj[keys[i]]
-    }
+    Object.keys(obj).forEach(function (key) {
+      obj[key]
+    })
   })
 
   bench('lodash.forEach', function () {
