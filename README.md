@@ -131,4 +131,5 @@ str_to_int_number
 # contribute
 
 1. add your test to `benchmark` dir
-1. run `$ make build` and it will update README.md including new test
+1. run `$ make benchmark file=benchmark/xxx.js` to run the benchmark
+1. then send a pr to me, I would add the result to README.md

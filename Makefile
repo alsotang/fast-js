@@ -4,7 +4,7 @@ install:
 	@npm install
 
 benchmark: install
-	@./node_modules/.bin/matcha -R plain
+	@./node_modules/.bin/matcha -R plain ${file}
 
 build: install
 	@./build.js
