@@ -11,6 +11,14 @@
 
 # benchmark
 
+[uniq_str_array.js](benchmark/uniq_str_array.js)
+
+```
+uniq_str_array
+  obj[key] = true ................................ 5,957 op/s
+  lodash.uniq .................................... 11,333 op/s
+```
+
 [arguments_to_array.js](benchmark/arguments_to_array.js)
 
 ```
@@ -45,8 +53,8 @@ for_loop
 
 ```
 hidden_class
-  withoutHiddenClass ............................. 72,448,120 op/s
-  withHiddenClass ................................ 130,504,857 op/s
+  withoutHiddenClass ............................. 40,051,618 op/s
+  withHiddenClass ................................ 54,829,686 op/s
 ```
 
 [inner_function.js](benchmark/inner_function.js)

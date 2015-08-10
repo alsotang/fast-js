@@ -30,6 +30,13 @@ function type(type) {
 }
 
 suite('hidden_class', function () {
+  before(function () {
+    // warm up
+    for (var i = 0; i < 10000000; i++) {
+      var a = new withoutHiddenClass();
+      var b = new withHiddenClass();
+    }
+  });
 
   bench('withoutHiddenClass', function () {
     var obj = new withoutHiddenClass();
@@ -44,6 +51,5 @@ suite('hidden_class', function () {
     obj.url('google.com');
     obj.type('get')
   });
-
 
 })
