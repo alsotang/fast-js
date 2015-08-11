@@ -22,6 +22,7 @@ suite('map_loop', function () {
   })
 
   bench('new Array(arr.length)', function () {
+    // avoid dynamic memory alloc when array grows
     var result = new Array(arr.length);
     for (var i = 0; i < arr.length; i++) {
       result[i] = plusOne(arr[i]);

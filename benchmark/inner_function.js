@@ -14,6 +14,10 @@ function outterFunc(num) {
 
 suite('inner_function', function () {
   bench('inner', function () {
+    /*
+      inner function would be created in each invoke
+      so this is slow
+    */
     innerFunc(1)
   })
 

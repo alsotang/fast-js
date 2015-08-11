@@ -7,6 +7,9 @@ var args = (function () {
 
 suite('arguments_to_array', function () {
   bench('[].slice.apply', function () {
+    /*
+      every invode would create a literal empty Array
+    */
     var a = [].slice.apply(args);
   })
 
@@ -23,6 +26,9 @@ suite('arguments_to_array', function () {
   })
 
   bench('lodash.toArray', function () {
+    /*
+      use while loop
+    */
     var a = _.toArray(args);
   })
 })

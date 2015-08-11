@@ -1,6 +1,8 @@
 // perhaps microbenchmarking here make no sense
 // can anyone provide a more meaningful cases?
 
+// about hidden class: https://developers.google.com/v8/design#prop_access
+
 function withoutHiddenClass() {
 
 }
