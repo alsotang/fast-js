@@ -11,6 +11,14 @@
 
 # benchmark
 
+[random_int.js](benchmark/random_int.js)
+
+```
+random_int
+  Math.random % range ............................ 96,766,824 op/s
+  lodash.random .................................. 22,369,157 op/s
+```
+
 [is_object_empty.js](benchmark/is_object_empty.js)
 
 ```
@@ -25,8 +33,8 @@ is_object_empty
 
 ```
 sample_from_array
-  Math.random % arr.length ....................... 1,197,742 op/s
-  lodash.sample .................................. 15,908,966 op/s
+  Math.random % arr.length ....................... 91,554,398 op/s
+  lodash.sample .................................. 15,749,745 op/s
 ```
 
 [uniq_str_array.js](benchmark/uniq_str_array.js)
