@@ -5,6 +5,10 @@ suite('str_to_int_number', function () {
     var a = +str;
   })
 
+  bench('~~str', function () {
+    var a = ~~str
+  })
+
   bench('Number(str)', function () {
     var a = Number(str)
   })
@@ -17,24 +21,5 @@ suite('str_to_int_number', function () {
     var a = parseInt(str, 10)
   })
 
-  bench('~~str', function () {
-    var a = ~~str
-  })
-
-  bench('str | 0', function () {
-    var a = str | 0
-  })
-
-  bench('str >> 0', function () {
-    var a = str >> 0
-  })
-
-  bench('str >>> 0', function () {
-    var a = str >>> 0
-  })
-
-  bench('str * 1', function () {
-    var a = str * 1
-  })
 })
 
