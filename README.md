@@ -2,6 +2,8 @@
 
 :heart_eyes: Writing Fast JavaScript
 
+each file has its own comment that illustrate why faster
+
 # env
 
 * platform: OS X 10.10.4
