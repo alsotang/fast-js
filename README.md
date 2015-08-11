@@ -11,6 +11,16 @@
 
 # benchmark
 
+[is_object_empty.js](benchmark/is_object_empty.js)
+
+```
+is_object_empty
+  Object.keys().length === 0 ..................... 5,619,592 op/s
+  lodash.isEmpty(obj) ............................ 2,425,126 op/s
+  Array.length === 0 ............................. 146,193,232 op/s
+  lodash.isEmpty(arr) ............................ 36,581,344 op/s
+```
+
 [sample_from_array.js](benchmark/sample_from_array.js)
 
 ```
