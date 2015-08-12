@@ -17,10 +17,10 @@ each file has its own comment that illustrate why faster
 
 ```
 regex_method
-  String.match ................................... 940,477 op/s
-  Regex.exec ..................................... 9,934,408 op/s
-  String.search .................................. 12,482,858 op/s
-  test ........................................... 17,508,991 op/s
+  String.match ................................... 15,127,762 op/s
+  Regex.exec ..................................... 15,222,764 op/s
+  String.search .................................. 14,978,548 op/s
+  test ........................................... 7,909,194 op/s
 ```
 
 [random_int.js](benchmark/random_int.js)
