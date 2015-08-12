@@ -1,23 +1,20 @@
-var str = 'Teste 1,\n 52,56368,9)7(9.9q7w7,*e*d*/;7.b/,a',
-    regex = /[^aeiou0-9\s]/g;
+var str = 'Teste 1,\n 52,56368,9)7(9.9q7w7,*e*d*/;7.b/,a';
+var regex = /[^aeiou0-9\s]/g;
 
-suite('regex_methods',function(){
-	//String.match
+suite('regex_method',function(){
 	bench('String.match',function(){
-		str.match(regex);
+		var m = str.match(regex);
 	})
 
 	bench('Regex.exec',function(){
-		regex.exec(str);
+		var m = regex.exec(str);
 	})
 
-	//String.search
 	bench('String.search',function(){
-		str.search(regex) !== -1;
+		var m = str.search(regex);
 	})
 
-	//test
 	bench('test',function(){
-		regex.test(str);
+		var m = regex.test(str);
 	})
 })

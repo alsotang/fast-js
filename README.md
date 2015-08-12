@@ -13,6 +13,16 @@ each file has its own comment that illustrate why faster
 
 # benchmark
 
+[regex_method.js](benchmark/regex_method.js)
+
+```
+regex_method
+  String.match ................................... 940,477 op/s
+  Regex.exec ..................................... 9,934,408 op/s
+  String.search .................................. 12,482,858 op/s
+  test ........................................... 17,508,991 op/s
+```
+
 [random_int.js](benchmark/random_int.js)
 
 ```
