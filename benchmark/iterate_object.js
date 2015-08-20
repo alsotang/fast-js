@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var obj = {a: 1, b: 2, c: 3, d: 4, e: 5};
+var obj = {a: 1, b: 2, c: 3, d: 4, e: 5, '-': 6};
 
 // maybe we should check .hasOwnProperty here
 suite('iterate_object', function () {
