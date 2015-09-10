@@ -3,7 +3,7 @@ all: benchmark
 install:
 	@npm install
 
-benchmark: install
+benchmark bench: install
 	@./node_modules/.bin/matcha -R plain ${file}
 
 build: install

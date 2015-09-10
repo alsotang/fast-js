@@ -13,6 +13,14 @@ each file has its own comment that illustrate why faster
 
 # benchmark
 
+[try_catch.js](benchmark/try_catch.js)
+
+```
+try_catch
+  with try catch ................................. 35,607 op/s
+  without try catch .............................. 38,063 op/s
+```
+
 [regex_method.js](benchmark/regex_method.js)
 
 ```
