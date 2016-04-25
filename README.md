@@ -82,12 +82,12 @@ arguments_to_array
 clone_object
   JSON.parse(JSON.stringify) ..................... 192,176 op/s
   lodash.cloneDeep .................................... 151,387 op/s
-  lodash.clone. this is shadow clone .................. 918,130 op/s
+  lodash.clone. this is shallow clone .................. 918,130 op/s
 ```
 
 [for_loop.js](benchmark/for_loop.js)
 
-```
+```shallow
 for_loop
   normal for loop. i < arr.length ................ 7,143 op/s
   normal for loop. cache arr.length .............. 7,070 op/s
