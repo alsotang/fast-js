@@ -34,7 +34,7 @@ suite('clone_object', function () {
     var obj2 = _.cloneDeep(obj1);
   })
 
-  bench('lodash.clone. this is shadow clone', function () {
+  bench('lodash.clone. this is shallow clone', function () {
     var obj2 = _.clone(obj1);
   })
 })
