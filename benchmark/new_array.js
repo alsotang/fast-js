@@ -9,4 +9,18 @@ suite('new_array', function () {
   bench('[]', function () {
     var a = [];
   })
+
+  bench('[] and assign', function () {
+    var a = []
+    for (var i = 0; i < 1000000; i++) {
+      a[i] = i
+    }
+  })
+
+  bench('new Array(length) and assign', function () {
+    var a = new Array(1000000);
+    for (var i = 0; i < 1000000; i++) {
+      a[i] = i
+    }
+  })
 })

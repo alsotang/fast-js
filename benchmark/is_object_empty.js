@@ -11,6 +11,10 @@ suite('is_object_empty', function () {
     var b = _.isEmpty(emptyObj);
   })
 
+  bench('JSON.stringify(obj) == {}', function () {
+    var b = JSON.stringify(emptyObj) == '{}';
+  })
+
   bench('Array.length === 0', function () {
     var b = emptyArr.length
   })
