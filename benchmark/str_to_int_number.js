@@ -21,5 +21,7 @@ suite('str_to_int_number', function () {
     var a = parseInt(str, 10)
   })
 
+  bench('str - 0', function () {
+    var a = str - 0
+  })
 })
-
