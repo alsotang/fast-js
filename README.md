@@ -220,6 +220,24 @@ obj_index
   string index `b` ............................... 185 op/s
 ```
 
+[util.format.js](benchmark/util.format.js)
+
+```
+util.format
+  util.format .................................... 1,618,519 op/s
+  str.replace .................................... 4,787,251 op/s
+  custom fn ...................................... 73,709,662 op/s
+```
+
+[array_from_set.js](benchmark/array_from_set.js)
+
+```
+array_from_set
+  Array.from ..................................... 61,961 op/s
+  Set#forEach .................................... 257,227 op/s
+  arr[index] ..................................... 283,303 op/s
+```
+
 # contribute
 
 1. add your test to benchmark dir
