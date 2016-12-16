@@ -197,8 +197,9 @@ try_catch
 
 ```
 uniq_str_array
-  obj[key] = true ................................ 9,769 op/s
-  lodash.uniq .................................... 9,002 op/s
+  obj[key] = true ................................ 6,848 op/s
+  lodash.uniq .................................... 13,970 op/s
+  Set ............................................ 11,336 op/s
 ```
 
 [yield_vs_closure.js](benchmark/yield_vs_closure.js)
