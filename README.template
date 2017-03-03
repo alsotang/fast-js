@@ -4,10 +4,10 @@
 
 # env
 
-* platform: OS X 10.12.1. MacBook Pro (13-inch, Late 2016, Four Thunderbolt 3 Ports)
+* platform: OS X 10.12.3. MacBook Pro (13-inch, Late 2016, Four Thunderbolt 3 Ports)
 * cpu: 3.3 GHz Intel Core i7
-* Node.js: v6.5.0
-* v8: 5.1.281.81
+* Node.js: v7.7.1
+* v8: 5.5.372.41
 
 # benchmark
 
