@@ -24,6 +24,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "co": "^4.6.0",
+    "immutable": "^3.8.2",
     "lodash": "^4.17.2",
     "matcha": "^0.7.0",
     "multiline": "^1.0.2"
