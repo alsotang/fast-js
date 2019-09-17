@@ -3,10 +3,10 @@ all: benchmark
 install:
 	@npm install
 
-benchmark bench: install
-	@./node_modules/.bin/matcha -R plain ${file}
+benchmark bench:
+	@npx matcha -R plain ${file}
 
-build: install
+build:
 	@./build.js
 
 .PHONY: all install benchmark build

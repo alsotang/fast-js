@@ -29,6 +29,7 @@ var benchmarkBlockTemplate = _.template(multiline(function () {
 var result = [];
 
 allBenchmarks.forEach(function (fileName) {
+  console.log(`execSync ${matchaCommand + ' -R plain ./benchmark/' + fileName}`)
   var output = execSync(matchaCommand + ' -R plain ./benchmark/' + fileName).toString();
 
   // remove unnecessary output
