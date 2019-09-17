@@ -6,8 +6,8 @@
 
 * platform: OS X 10.14.6. MacBook Pro (15-inch, 2018)
 * cpu: 2.2 GHz Intel Core i7
-* Node.js: v12.10.0
-* v8: 7.6.303.29-node.16
+* Node.js: v11.13.0
+* v8: 7.0.276.38-node.18
 
 # benchmark
 

@@ -8,7 +8,7 @@ var matchaCommand = path.join(__dirname, './node_modules/.bin/matcha');
 var multiline = require('multiline');
 
 var benchmarkDir = path.join(__dirname, 'benchmark');
-var readmeTemplate = _.template(fs.readFileSync(path.join(__dirname, 'README.template'), 'utf-8'));
+var readmeTemplate = _.template(fs.readFileSync(path.join(__dirname, 'README.template.md'), 'utf-8'));
 var readmeLocate = path.join(__dirname, 'README.md');
 
 var allBenchmarks = fs.readdirSync(benchmarkDir);

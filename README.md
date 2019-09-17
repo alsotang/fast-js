@@ -15,228 +15,228 @@
 
 ```
 arguments_to_array
-  [].slice.apply ................................. 10,467,914 op/s
-  [].slice.call .................................. 9,097,008 op/s
-  Array.prototype.slice.apply .................... 9,063,436 op/s
-  Array.prototype.slice.call ..................... 7,581,630 op/s
-  lodash.toArray ................................. 15,341,482 op/s
+  [].slice.apply ................................. 10,345,865 op/s
+  [].slice.call .................................. 9,226,320 op/s
+  Array.prototype.slice.apply .................... 9,534,518 op/s
+  Array.prototype.slice.call ..................... 8,939,057 op/s
+  lodash.toArray ................................. 18,654,083 op/s
 ```
 
 [array_from_set.js](benchmark/array_from_set.js)
 
 ```
 array_from_set
-  Array.from ..................................... 121,690 op/s
-  Set#forEach .................................... 602,596 op/s
-  arr[index] ..................................... 806,180 op/s
+  Array.from ..................................... 122,566 op/s
+  Set#forEach .................................... 699,947 op/s
+  arr[index] ..................................... 825,168 op/s
 ```
 
 [clone_object.js](benchmark/clone_object.js)
 
 ```
 clone_object
-  JSON.parse(JSON.stringify) ..................... 413,330 op/s
-  lodash.cloneDeep ............................... 372,348 op/s
-  lodash.clone. this is shallow clone ............ 2,357,969 op/s
+  JSON.parse(JSON.stringify) ..................... 429,187 op/s
+  lodash.cloneDeep ............................... 368,886 op/s
+  lodash.clone. this is shallow clone ............ 2,422,667 op/s
 ```
 
 [co_wrap_vs_bluebrid_coroutine.js](benchmark/co_wrap_vs_bluebrid_coroutine.js)
 
 ```
 co_wrap_vs_bluebird_coroutine
-  co.wrap ........................................ 9,918 op/s
-  bluebird.coroutine ............................. 647 op/s
+  co.wrap ........................................ 10,079 op/s
+  bluebird.coroutine ............................. 661 op/s
 ```
 
 [for_loop.js](benchmark/for_loop.js)
 
 ```
 for_loop
-  normal for loop. i < arr.length ................ 12,253 op/s
-  normal for loop. cache arr.length .............. 12,178 op/s
-  native forEach ................................. 1,001 op/s
-  lodash.forEach ................................. 1,167 op/s
+  normal for loop. i < arr.length ................ 13,079 op/s
+  normal for loop. cache arr.length .............. 12,564 op/s
+  native forEach ................................. 1,053 op/s
+  lodash.forEach ................................. 1,177 op/s
 ```
 
 [hidden_class.js](benchmark/hidden_class.js)
 
 ```
 hidden_class
-  withoutHiddenClass ............................. 1,818,361,310 op/s
-  withHiddenClass ................................ 227,820,368 op/s
+  withoutHiddenClass ............................. 1,931,178,067 op/s
+  withHiddenClass ................................ 255,532,521 op/s
 ```
 
 [inner_function.js](benchmark/inner_function.js)
 
 ```
 inner_function
-  inner .......................................... 1,847,440,888 op/s
-  outter ......................................... 243,106,313 op/s
+  inner .......................................... 1,932,735,380 op/s
+  outter ......................................... 254,131,841 op/s
 ```
 
 [is_object_empty.js](benchmark/is_object_empty.js)
 
 ```
 is_object_empty
-  Object.keys().length === 0 ..................... 159,753,805 op/s
-  lodash.isEmpty(obj) ............................ 33,215,966 op/s
-  JSON.stringify(obj) == {} ...................... 5,357,035 op/s
-  Array.length === 0 ............................. 233,928,740 op/s
-  lodash.isEmpty(arr) ............................ 16,635,304 op/s
+  Object.keys().length === 0 ..................... 160,924,524 op/s
+  lodash.isEmpty(obj) ............................ 34,162,973 op/s
+  JSON.stringify(obj) == {} ...................... 5,449,599 op/s
+  Array.length === 0 ............................. 239,116,284 op/s
+  lodash.isEmpty(arr) ............................ 15,999,059 op/s
 ```
 
 [iterate_object.js](benchmark/iterate_object.js)
 
 ```
 iterate_object
-  for .. in .. ................................... 129,879,683 op/s
-  Object.keys .................................... 12,041,019 op/s
-  lodash.forEach ................................. 7,204,121 op/s
+  for .. in .. ................................... 132,709,645 op/s
+  Object.keys .................................... 11,718,699 op/s
+  lodash.forEach ................................. 6,699,610 op/s
 ```
 
 [map_loop.js](benchmark/map_loop.js)
 
 ```
 map_loop
-  normal loop. use push .......................... 709 op/s
-  normal loop. use index ......................... 758 op/s
-  new Array(arr.length) .......................... 1,779 op/s
-  native map ..................................... 86 op/s
-  lodash.forEach ................................. 697 op/s
+  normal loop. use push .......................... 642 op/s
+  normal loop. use index ......................... 741 op/s
+  new Array(arr.length) .......................... 1,607 op/s
+  native map ..................................... 85 op/s
+  lodash.forEach ................................. 631 op/s
 ```
 
 [new_array.js](benchmark/new_array.js)
 
 ```
 new_array
-  new Array() .................................... 1,876,793,422 op/s
-  [] ............................................. 194,280,013 op/s
-  [] and assign .................................. 49 op/s
-  new Array(length) and assign ................... 189 op/s
+  new Array() .................................... 1,876,141,339 op/s
+  [] ............................................. 253,878,817 op/s
+  [] and assign .................................. 48 op/s
+  new Array(length) and assign ................... 182 op/s
 ```
 
 [new_promise.js](benchmark/new_promise.js)
 
 ```
 new_promise
-  v8 native `new promise` ........................ 14,226,946 op/s
-  bluebird `new promise` ......................... 5,240,978 op/s
-  v8 native promise.resolve ...................... 17,184,513 op/s
-  bluebird promise.resolve ....................... 7,203,127 op/s
-  co ............................................. 682,287 op/s
+  v8 native `new promise` ........................ 15,184,084 op/s
+  bluebird `new promise` ......................... 5,263,119 op/s
+  v8 native promise.resolve ...................... 17,131,364 op/s
+  bluebird promise.resolve ....................... 7,097,747 op/s
+  co ............................................. 634,827 op/s
 ```
 
 [next_tick.js](benchmark/next_tick.js)
 
 ```
 next_tick
-  process.nextTick ............................... 4,471 op/s
-  setTimeout(0) .................................. 1,719 op/s
-  setImmediate ................................... 2,915 op/s
+  process.nextTick ............................... 4,520 op/s
+  setTimeout(0) .................................. 2,539 op/s
+  setImmediate ................................... 2,436 op/s
 ```
 
 [obj_index.js](benchmark/obj_index.js)
 
 ```
 obj_index
-  number index `1` ............................... 191 op/s
-  string index `1` ............................... 12 op/s
-  dot index `b` .................................. 192 op/s
-  string index `b` ............................... 191 op/s
+  number index `1` ............................... 193 op/s
+  string index `1` ............................... 13 op/s
+  dot index `b` .................................. 191 op/s
+  string index `b` ............................... 194 op/s
 ```
 
 [random_int.js](benchmark/random_int.js)
 
 ```
 random_int
-  Math.random % range ............................ 138,548,597 op/s
-  lodash.random .................................. 68,037,077 op/s
+  Math.random % range ............................ 139,129,087 op/s
+  lodash.random .................................. 68,875,876 op/s
 ```
 
 [regex_method.js](benchmark/regex_method.js)
 
 ```
 regex_method
-  String.match ................................... 33,764,671 op/s
-  Regex.exec ..................................... 30,553,256 op/s
-  String.search .................................. 39,657,223 op/s
-  test ........................................... 47,538,872 op/s
+  String.match ................................... 34,324,145 op/s
+  Regex.exec ..................................... 32,566,164 op/s
+  String.search .................................. 42,141,151 op/s
+  test ........................................... 49,850,227 op/s
 ```
 
 [sample_from_array.js](benchmark/sample_from_array.js)
 
 ```
 sample_from_array
-  Math.random % arr.length ....................... 120,468,740 op/s
-  lodash.sample .................................. 76,247,874 op/s
+  Math.random % arr.length ....................... 119,607,776 op/s
+  lodash.sample .................................. 76,097,086 op/s
 ```
 
 [start_with.js](benchmark/start_with.js)
 
 ```
 start_with
-  regex /^ab/ .................................... 52,238,294 op/s
-  indexOf === 0 .................................. 251,476,549 op/s
-  lodash.startsWith .............................. 216,473,772 op/s
+  regex /^ab/ .................................... 51,936,744 op/s
+  indexOf === 0 .................................. 257,689,177 op/s
+  lodash.startsWith .............................. 224,893,730 op/s
 ```
 
 [str_concat.js](benchmark/str_concat.js)
 
 ```
 str_concat
-  + .............................................. 1,864,674,551 op/s
-  += ............................................. 247,954,323 op/s
-  arr.join("") ................................... 4,272,730 op/s
-  str.concat ..................................... 123,592,023 op/s
+  + .............................................. 1,903,936,518 op/s
+  += ............................................. 255,340,202 op/s
+  arr.join("") ................................... 4,514,128 op/s
+  str.concat ..................................... 125,851,752 op/s
 ```
 
 [str_to_int_number.js](benchmark/str_to_int_number.js)
 
 ```
 str_to_int_number
-  +str ........................................... 1,851,602,585 op/s
-  ~~str .......................................... 246,209,881 op/s
-  Number(str) .................................... 247,447,125 op/s
-  parseInt(str) .................................. 168,341,732 op/s
-  parseInt(str, 10) .............................. 174,250,309 op/s
-  str - 0 ........................................ 235,852,645 op/s
+  +str ........................................... 1,853,887,419 op/s
+  ~~str .......................................... 254,551,528 op/s
+  Number(str) .................................... 253,523,561 op/s
+  parseInt(str) .................................. 189,537,440 op/s
+  parseInt(str, 10) .............................. 184,031,920 op/s
+  str - 0 ........................................ 255,495,390 op/s
 ```
 
 [try_catch.js](benchmark/try_catch.js)
 
 ```
 try_catch
-  JSON.parse with try catch ...................... 47,775 op/s
-  JSON.parse without try catch ................... 48,004 op/s
-  for loop with try catch ........................ 767 op/s
-  for loop without try catch ..................... 751 op/s
+  JSON.parse with try catch ...................... 48,697 op/s
+  JSON.parse without try catch ................... 47,312 op/s
+  for loop with try catch ........................ 745 op/s
+  for loop without try catch ..................... 790 op/s
 ```
 
 [uniq_str_array.js](benchmark/uniq_str_array.js)
 
 ```
 uniq_str_array
-  obj[key] = true ................................ 47,326 op/s
-  lodash.uniq .................................... 48,309 op/s
-  Set ............................................ 34,185 op/s
+  obj[key] = true ................................ 51,647 op/s
+  lodash.uniq .................................... 45,311 op/s
+  Set ............................................ 34,895 op/s
 ```
 
 [util.format.js](benchmark/util.format.js)
 
 ```
 util.format
-  util.format .................................... 1,900,150 op/s
-  str.replace .................................... 18,278,409 op/s
-  custom fn ...................................... 237,894,462 op/s
+  util.format .................................... 1,963,375 op/s
+  str.replace .................................... 19,043,684 op/s
+  custom fn ...................................... 256,817,085 op/s
 ```
 
 [yield_vs_closure.js](benchmark/yield_vs_closure.js)
 
 ```
 yield_vs_closure
-  yield .......................................... 490 op/s
+  yield .......................................... 505 op/s
   yield* ......................................... 229 op/s
-  closure ........................................ 6,145 op/s
+  closure ........................................ 6,009 op/s
 ```
 
 # contribute
