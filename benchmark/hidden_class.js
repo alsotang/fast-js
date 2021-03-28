@@ -2,7 +2,8 @@
 // can anyone provide a more meaningful cases?
 
 // about hidden class: https://developers.google.com/v8/design#prop_access
-
+const Benchmark = require('benchmark');
+const suite = new Benchmark.Suite()
 function withoutHiddenClass() {
 
 }
@@ -31,27 +32,33 @@ function type(type) {
   this._type = type;
 }
 
-suite('hidden_class', function () {
-  before(function () {
-    // warm up
-    for (var i = 0; i < 10000000; i++) {
-      var a = new withoutHiddenClass();
-      var b = new withHiddenClass();
-    }
-  });
+suite.add(function () {
+  // warm up
+  for (var i = 0; i < 10000000; i++) {
+    var a = new withoutHiddenClass();
+    var b = new withHiddenClass();
+  }
+});
 
-  bench('withoutHiddenClass', function () {
-    var obj = new withoutHiddenClass();
-    obj.timeout(1);
-    obj.url('google.com');
-    obj.type('get')
-  });
+suite.add('withoutHiddenClass', function () {
+  var obj = new withoutHiddenClass();
+  obj.timeout(1);
+  obj.url('google.com');
+  obj.type('get')
+});
 
-  bench('withHiddenClass', function () {
-    var obj = new withHiddenClass();
-    obj.timeout(1);
-    obj.url('google.com');
-    obj.type('get')
-  });
+suite.add('withHiddenClass', function () {
+  var obj = new withHiddenClass();
+  obj.timeout(1);
+  obj.url('google.com');
+  obj.type('get')
+});
 
+suite.on('cycle', function (event) {
+  console.log(String(event.target));
 })
+  .on('complete', function () {
+    console.log('Fastest is ' + this.filter('fastest').map('name'));
+  })
+
+suite.run()

@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/alsotang/fast-js#readme",
   "dependencies": {
+    "benchmark": "^2.1.4",
     "bluebird": "*",
     "co": "*",
     "lodash": "*",
-    "matcha": "^0.7.0",
     "multiline": "*"
   }
 }

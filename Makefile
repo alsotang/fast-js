@@ -1,12 +1,6 @@
-all: benchmark
-
-install:
-	@npm install
-
-benchmark bench:
-	@npx matcha -R plain ${file}
+all: build
 
 build:
 	@./build.js
 
-.PHONY: all install benchmark build
+.PHONY: all build

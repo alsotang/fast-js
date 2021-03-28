@@ -1,34 +1,44 @@
-var _ = require('lodash');
+const _ = require('lodash');
+const Benchmark = require('benchmark');
 
 var args = (function () {
   return arguments;
 })(1, 2, 3, 4, 5);
 
 
-suite('arguments_to_array', function () {
-  bench('[].slice.apply', function () {
-    /*
-      every invode would create a literal empty Array
-    */
-    var a = [].slice.apply(args);
-  })
+const suite = new Benchmark.Suite()
 
-  bench('[].slice.call', function () {
-    var a = [].slice.call(args);
-  })
-
-  bench('Array.prototype.slice.apply', function () {
-    var a = Array.prototype.slice.apply(args);
-  })
-
-  bench('Array.prototype.slice.call', function () {
-    var a = Array.prototype.slice.call(args);
-  })
-
-  bench('lodash.toArray', function () {
-    /*
-      use while loop
-    */
-    var a = _.toArray(args);
-  })
+suite.add('[].slice.apply', function () {
+  /*
+    every invode would create a literal empty Array
+  */
+  var a = [].slice.apply(args);
 })
+
+suite.add('[].slice.call', function () {
+  var a = [].slice.call(args);
+})
+
+suite.add('Array.prototype.slice.apply', function () {
+  var a = Array.prototype.slice.apply(args);
+})
+
+suite.add('Array.prototype.slice.call', function () {
+  var a = Array.prototype.slice.call(args);
+})
+
+suite.add('lodash.toArray', function () {
+  /*
+    use while loop
+  */
+  var a = _.toArray(args);
+})
+
+suite.on('cycle', function(event) {
+  console.log(String(event.target));
+})
+.on('complete', function() {
+  console.log('Fastest is ' + this.filter('fastest').map('name'));
+})
+
+suite.run()

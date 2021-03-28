@@ -1,3 +1,5 @@
+const Benchmark = require('benchmark');
+const suite = new Benchmark.Suite()
 var util = require('util')
 
 var longString1 = 'googlegooglegooglegooglegooglegooglegooglegooglegooglegooglegooglegoogle%sgooglegooglegooglegooglegooglegooglegooglegooglegooglegooglegooglegoogle'
@@ -8,16 +10,23 @@ var longString3 = function (_replacer) {
 
 var replacer = 'tablename';
 
-suite('util.format', function () {
-  bench('util.format', function () {
-    util.format(longString1, replacer)
-  })
-
-  bench('str.replace', function () {
-    longString2.replace('$$$', replacer)
-  })
-
-  bench('custom fn', function () {
-    longString3(replacer)
-  })
+suite.add('util.format', function () {
+  util.format(longString1, replacer)
 })
+
+suite.add('str.replace', function () {
+  longString2.replace('$$$', replacer)
+})
+
+suite.add('custom fn', function () {
+  longString3(replacer)
+})
+
+suite.on('cycle', function (event) {
+  console.log(String(event.target));
+})
+  .on('complete', function () {
+    console.log('Fastest is ' + this.filter('fastest').map('name'));
+  })
+
+suite.run()

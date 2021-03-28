@@ -1,25 +1,35 @@
 var _ = require('lodash')
+const Benchmark = require('benchmark');
 var testSet = new Set(_.range(100))
 
-suite('array_from_set', function () {
-  bench('Array.from', function () {
-    Array.from(testSet)
-  })
+const suite = new Benchmark.Suite()
 
-  bench('Set#forEach', function () {
-    var arr = [];
+suite.add('Array.from', function () {
+  Array.from(testSet)
+})
 
-    testSet.forEach(function (v) {
-      arr.push(v)
-    })
-  })
+suite.add('Set#forEach', function () {
+  var arr = [];
 
-  bench('arr[index]', function () {
-    var arr = new Array(testSet.size);
-
-    var index = 0;
-    testSet.forEach(function (v) {
-      arr[index++] = v
-    })
+  testSet.forEach(function (v) {
+    arr.push(v)
   })
 })
+
+suite.add('arr[index]', function () {
+  var arr = new Array(testSet.size);
+
+  var index = 0;
+  testSet.forEach(function (v) {
+    arr[index++] = v
+  })
+})
+
+suite.on('cycle', function(event) {
+  console.log(String(event.target));
+})
+.on('complete', function() {
+  console.log('Fastest is ' + this.filter('fastest').map('name'));
+})
+
+suite.run()

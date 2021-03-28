@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var execSync = require('child_process').execSync;
-var matchaCommand = path.join(__dirname, './node_modules/.bin/matcha');
+var nodeBin = 'node';
 var multiline = require('multiline');
 
 var benchmarkDir = path.join(__dirname, 'benchmark');
@@ -29,20 +29,14 @@ var benchmarkBlockTemplate = _.template(multiline(function () {
 var result = [];
 
 allBenchmarks.forEach(function (fileName) {
-  console.log(`execSync ${matchaCommand + ' -R plain ./benchmark/' + fileName}`)
-  var output = execSync(matchaCommand + ' -R plain ./benchmark/' + fileName).toString();
-
-  // remove unnecessary output
-  output = output.split('\n');
-  _.range(5).forEach(function () {
-    output.pop();
-  });
-  output = output.join('\n');
-  // END remove unnecessary output
+  console.log(`execSync ${nodeBin + ' ./benchmark/' + fileName}`)
+  var output = execSync(nodeBin + ' ./benchmark/' + fileName).toString();
 
   var bmresult = benchmarkBlockTemplate({
     filename: fileName,
     benchmark_result: output,
+    node_version: process.versions.node,
+    v8_version: process.versions.v8,
   });
 
   result.push(bmresult);
