@@ -1,0 +1,29 @@
+name: update_benchmark
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '30 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  update_image:
+    # Name the Job
+    name: update benchmark everyday
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 'lts'
+      - name: run benchmark and generate readme
+        run: make
+      - uses: EndBug/add-and-commit@v7
+        with:
+          message: 'update benchmark everyday'
+          add: '.'
