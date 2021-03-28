@@ -35,15 +35,15 @@ allBenchmarks.forEach(function (fileName) {
   var bmresult = benchmarkBlockTemplate({
     filename: fileName,
     benchmark_result: output,
-    node_version: process.versions.node,
-    v8_version: process.versions.v8,
   });
 
   result.push(bmresult);
 });
 
 var readmeText = readmeTemplate({
-  benchmark_result: result.join('\n\n')
+  benchmark_result: result.join('\n\n'),
+  node_version: process.versions.node,
+  v8_version: process.versions.v8,
 });
 
 fs.writeFileSync(readmeLocate, readmeText);
