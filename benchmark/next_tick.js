@@ -5,7 +5,7 @@ const suite = new Benchmark.Suite()
 
 suite.add('process.nextTick', function () {
   var a = 0;
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 100; i++) {
     process.nextTick(function () {
       a++
     })
@@ -14,21 +14,12 @@ suite.add('process.nextTick', function () {
 
 suite.add('setTimeout(0)', function () {
   var a = 0
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 100; i++) {
     setTimeout(function () {
       a++
     }, 0)
   }
 })
-
-suite.add('setImmediate', function () {
-  var a = 0;
-  for (var i = 0; i < 1000; i++) {
-    setImmediate(function () {
-      a++;
-    })
-  }
-});
 
 suite.on('cycle', function (event) {
   console.log(String(event.target));
