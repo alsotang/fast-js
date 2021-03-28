@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - run: npm i
       - name: run benchmark and generate readme
         run: make
       - uses: EndBug/add-and-commit@v7
