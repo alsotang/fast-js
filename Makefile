@@ -1,6 +1,8 @@
-all: build
+all: run
 
-build:
-	@./build.js
+compile:
+	@./compile.js
+run: compile
+	@./run.js
 
-.PHONY: all build
+.PHONY: all run compile

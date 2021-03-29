@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Writing Fast JavaScript",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alsotang/fast-js.git"
@@ -27,5 +25,10 @@
     "co": "*",
     "lodash": "*",
     "multiline": "*"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2"
   }
 }

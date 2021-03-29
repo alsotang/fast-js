@@ -1,15 +1,17 @@
 #! /usr/bin/env node
 
 var fs = require('fs');
-var path = require('path');
+var pathlib = require('path');
 var _ = require('lodash');
 var execSync = require('child_process').execSync;
 var nodeBin = 'node';
+const qjsBin = 'qjs'
 var multiline = require('multiline');
 
-var benchmarkDir = path.join(__dirname, 'benchmark');
-var readmeTemplate = _.template(fs.readFileSync(path.join(__dirname, 'README.template.md'), 'utf-8'));
-var readmeLocate = path.join(__dirname, 'README.md');
+var benchmarkDir = pathlib.join(__dirname, 'benchmark');
+const distDir = pathlib.join(__dirname, 'dist')
+var readmeTemplate = _.template(fs.readFileSync(pathlib.join(__dirname, 'README.template.md'), 'utf-8'));
+var readmeLocate = pathlib.join(__dirname, 'README.md');
 
 var allBenchmarks = fs.readdirSync(benchmarkDir);
 allBenchmarks = allBenchmarks.filter(function (fileName) {
@@ -20,8 +22,17 @@ var benchmarkBlockTemplate = _.template(multiline(function () {
 /*
 [<%= filename %>](benchmark/<%= filename %>)
 
+
+Node.js output:
+
 ```
-<%= benchmark_result %>
+<%= nodejs_benchmark_result %>
+```
+
+QuickJS output:
+
+```
+<%= qjs_benchmark_result %>
 ```
 */
 }));
@@ -29,12 +40,16 @@ var benchmarkBlockTemplate = _.template(multiline(function () {
 var result = [];
 
 allBenchmarks.forEach(function (fileName) {
-  console.log(`execSync ${nodeBin + ' ./benchmark/' + fileName}`)
-  var output = execSync(nodeBin + ' ./benchmark/' + fileName).toString();
+  const benchmarkDistFile = pathlib.join(distDir, fileName)
+  console.log(`${nodeBin} ${benchmarkDistFile}`)
+  var nodejsOutput = execSync(`${nodeBin} ${benchmarkDistFile}`).toString();
+  console.log(`${qjsBin} ${benchmarkDistFile}`)
+  var qjsOutput = execSync(`${qjsBin} ${benchmarkDistFile}`).toString();
 
   var bmresult = benchmarkBlockTemplate({
     filename: fileName,
-    benchmark_result: output,
+    nodejs_benchmark_result: nodejsOutput,
+    qjs_benchmark_result: qjsOutput,
   });
 
   result.push(bmresult);
