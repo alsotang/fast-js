@@ -32,14 +32,6 @@ function type(type) {
   this._type = type;
 }
 
-suite.add(function () {
-  // warm up
-  for (var i = 0; i < 10000000; i++) {
-    var a = new withoutHiddenClass();
-    var b = new withHiddenClass();
-  }
-});
-
 suite.add('withoutHiddenClass', function () {
   var obj = new withoutHiddenClass();
   obj.timeout(1);

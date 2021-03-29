@@ -14,8 +14,8 @@ var readmeTemplate = _.template(fs.readFileSync(pathlib.join(__dirname, 'README.
 var readmeLocate = pathlib.join(__dirname, 'README.md');
 
 var allBenchmarks = fs.readdirSync(benchmarkDir);
-allBenchmarks = allBenchmarks.filter(function (fileName) {
-  return _.endsWith(fileName, '.js');
+allBenchmarks = allBenchmarks.filter(function (filename) {
+  return _.endsWith(filename, '.js');
 });
 
 var benchmarkBlockTemplate = _.template(multiline(function () {
@@ -39,15 +39,16 @@ QuickJS output:
 
 var result = [];
 
-allBenchmarks.forEach(function (fileName) {
-  const benchmarkDistFile = pathlib.join(distDir, fileName)
-  console.log(`${nodeBin} ${benchmarkDistFile}`)
-  var nodejsOutput = execSync(`${nodeBin} ${benchmarkDistFile}`).toString();
+allBenchmarks.forEach(function (filename) {
+  const benchmarkFile = pathlib.join(benchmarkDir, filename)
+  const benchmarkDistFile = pathlib.join(distDir, filename)
+  console.log(`${nodeBin} ${benchmarkFile}`)
+  var nodejsOutput = execSync(`${nodeBin} ${benchmarkFile}`).toString();
   console.log(`${qjsBin} ${benchmarkDistFile}`)
   var qjsOutput = execSync(`${qjsBin} ${benchmarkDistFile}`).toString();
 
   var bmresult = benchmarkBlockTemplate({
-    filename: fileName,
+    filename: filename,
     nodejs_benchmark_result: nodejsOutput,
     qjs_benchmark_result: qjsOutput,
   });
@@ -59,6 +60,7 @@ var readmeText = readmeTemplate({
   benchmark_result: result.join('\n\n'),
   node_version: process.versions.node,
   v8_version: process.versions.v8,
+  quickjs_version: execSync('qjs -h | grep version').toString().trim()
 });
 
 fs.writeFileSync(readmeLocate, readmeText);

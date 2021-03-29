@@ -3,7 +3,7 @@ var co = require('co')
 const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite()
 
-suite.add('v8 native `new promise`', function (deferred) {
+suite.add('native `new promise`', function (deferred) {
   new Promise(function (resolve, reject) {
     resolve(1);
   }).then(() => {
@@ -23,7 +23,7 @@ suite.add('bluebird `new promise`', function (deferred) {
   defer: true
 })
 
-suite.add('v8 native promise.resolve', function (deferred) {
+suite.add('native promise.resolve', function (deferred) {
   Promise.resolve(1).then(() => {
     deferred.resolve()
   })

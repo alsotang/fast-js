@@ -5,11 +5,14 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron:  '30 6 1 * *'
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
-  update_image:
+  update_benchmark:
     # Name the Job
     name: update benchmark every month
     # Set the type of machine to run on
@@ -22,6 +25,13 @@ jobs:
         with:
           node-version: '14'
       - run: npm i
+      - name: system build deps
+        run: sudo apt-get install -y build-essential gcc-multilib
+      - run: |
+          git clone https://github.com/bellard/quickjs.git && \
+          cd quickjs && \
+          make && \
+          sudo make install
       - name: run benchmark and generate readme
         run: make
       - uses: EndBug/add-and-commit@v7

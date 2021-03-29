@@ -18,6 +18,12 @@ allBenchmarks = allBenchmarks.filter(function (fileName) {
   return _.endsWith(fileName, '.js');
 });
 
+const quickjsShimCode = `
+import * as os from 'os';
+globalThis.global = globalThis;
+globalThis.setTimeout = globalThis.setTimeout || os.setTimeout;
+`
+
 allBenchmarks.forEach(function (fileName) {
   const src = pathlib.join(benchmarkDir, fileName)
   const target = pathlib.join(distDir, fileName)
@@ -26,5 +32,5 @@ allBenchmarks.forEach(function (fileName) {
 
   const targetContent = fs.readFileSync(target).toString();
   // There is no `global` variable in quickjs. So assign it. benchmark.js needs it
-  fs.writeFileSync(target, `globalThis.global = globalThis; ${targetContent}`)
+  fs.writeFileSync(target, `${quickjsShimCode} ${targetContent}`)
 });
