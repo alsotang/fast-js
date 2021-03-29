@@ -3,7 +3,7 @@ name: update_benchmark
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '30 0 * * *'
+    - cron:  '30 6 1 * *'
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
   # when a job name is not provided
   update_image:
     # Name the Job
-    name: update benchmark everyday
+    name: update benchmark every month
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -26,5 +26,5 @@ jobs:
         run: make
       - uses: EndBug/add-and-commit@v7
         with:
-          message: 'update benchmark everyday'
+          message: 'update benchmark every month'
           add: '.'
