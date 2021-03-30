@@ -1,9 +1,6 @@
 name: update_benchmark
 
 on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '30 6 1 * *'
   workflow_dispatch:
   push:
     branches:
@@ -14,7 +11,7 @@ jobs:
   # when a job name is not provided
   update_benchmark:
     # Name the Job
-    name: update benchmark every month
+    name: update benchmark results
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -27,14 +24,15 @@ jobs:
       - run: npm i
       - name: system build deps
         run: sudo apt-get install -y build-essential gcc-multilib
-      - run: |
+      - name: install quickjs latest version
+        run: |
           git clone https://github.com/bellard/quickjs.git && \
           cd quickjs && \
           make && \
           sudo make install
       - name: run benchmark and generate readme
-        run: make
+        run: npm run gen_readme
       - uses: EndBug/add-and-commit@v7
         with:
-          message: 'update benchmark every month'
+          message: 'update benchmark results'
           add: '.'

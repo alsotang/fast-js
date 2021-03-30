@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Writing Fast JavaScript",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "gen_readme": "npm run compile && node gen_readme.js",
+    "compile": "node compile.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alsotang/fast-js.git"
