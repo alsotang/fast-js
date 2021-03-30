@@ -29,7 +29,8 @@ jobs:
           git clone https://github.com/bellard/quickjs.git && \
           cd quickjs && \
           make && \
-          sudo make install
+          sudo make install && \
+          rm -rf quickjs
       - name: run benchmark and generate readme
         run: npm run gen_readme
       - uses: EndBug/add-and-commit@v7
