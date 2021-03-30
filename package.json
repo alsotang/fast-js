@@ -4,8 +4,8 @@
   "description": "Writing Fast JavaScript",
   "main": "index.js",
   "scripts": {
-    "gen_readme": "npm run compile && node gen_readme.js",
-    "compile": "node compile.js"
+    "generate": "node gen_readme.js",
+    "prettier": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -26,12 +26,12 @@
     "benchmark": "^2.1.4",
     "bluebird": "*",
     "co": "*",
-    "lodash": "*",
-    "multiline": "*"
+    "lodash": "*"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
     "mkdirp": "^1.0.4",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2"
   }
 }

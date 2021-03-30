@@ -1,36 +1,54 @@
-#! /usr/bin/env node
+const fs = require("fs");
+const mkdirp = require("mkdirp");
+const pathlib = require("path");
+const browserify = require("browserify");
+const stream = require("stream");
+const { benchmarkDir, nodejsDistDir, quickjsDistDir } = require("./utils");
 
-var fs = require('fs');
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
-const pathlib = require('path')
-var _ = require('lodash');
-var execSync = require('child_process').execSync;
+// mkdir dist dir
+mkdirp.sync(nodejsDistDir);
+mkdirp.sync(quickjsDistDir);
 
-
-var benchmarkDir = pathlib.join(__dirname, 'benchmark');
-const distDir = pathlib.join(__dirname, 'dist');
-rimraf.sync(distDir)
-mkdirp.sync(distDir)
-
-var allBenchmarks = fs.readdirSync(benchmarkDir);
-allBenchmarks = allBenchmarks.filter(function (fileName) {
-  return _.endsWith(fileName, '.js');
-});
-
+// shim code for quickjs
 const quickjsShimCode = `
 import * as os from 'os';
 globalThis.global = globalThis;
 globalThis.setTimeout = globalThis.setTimeout || os.setTimeout;
-`
+`;
 
-allBenchmarks.forEach(function (fileName) {
-  const src = pathlib.join(benchmarkDir, fileName)
-  const target = pathlib.join(distDir, fileName)
-  console.log(`npx browserify ${src}  -o ${target}`)
-  execSync(`npx browserify ${src}  -o ${target}`)
+async function compile(srcFilename) {
+  return new Promise((resolve) => {
+    console.log(`compiling ${srcFilename} ...`);
+    const benchmarkTemplate = fs.readFileSync(
+      pathlib.join(__dirname, "benchmark_template.js"),
+      "utf-8"
+    );
 
-  const targetContent = fs.readFileSync(target).toString();
-  // There is no `global` variable in quickjs. So assign it. benchmark.js needs it
-  fs.writeFileSync(target, `${quickjsShimCode} ${targetContent}`)
-});
+    const benchmarkFilePath = pathlib.join(benchmarkDir, srcFilename);
+    // inject require path
+    const finalBenchmarkContent = benchmarkTemplate.replace(
+      "{{{benchmark_file}}}",
+      benchmarkFilePath
+    );
+
+    // construct readable stream for browserify
+    const readableStream = new stream.Readable();
+    readableStream.push(finalBenchmarkContent);
+    readableStream.push(null);
+
+    // bundle and output to dist
+    browserify(readableStream, { basedir: benchmarkDir }).bundle(function (
+      err,
+      buf
+    ) {
+      const nodejsTarget = pathlib.join(nodejsDistDir, srcFilename);
+      const quickjsTarget = pathlib.join(quickjsDistDir, srcFilename);
+
+      fs.writeFileSync(nodejsTarget, `${buf.toString()}`);
+      fs.writeFileSync(quickjsTarget, `${quickjsShimCode} ${buf.toString()}`);
+      resolve();
+    });
+  });
+}
+
+exports = module.exports = compile;

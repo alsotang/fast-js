@@ -1,33 +1,34 @@
-var _ = require('lodash');
-const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite()
+var _ = require("lodash");
 
-var obj = { a: 1, b: 2, c: 3, d: 4, e: 5, '-': 6 };
+var obj = { a: 1, b: 2, c: 3, d: 4, e: 5, "-": 6 };
 
 // maybe we should check .hasOwnProperty here
-suite.add('for .. in ..', function () {
-  for (var k in obj) {
-    obj[k]
-  }
-})
 
-suite.add('Object.keys', function () {
-  Object.keys(obj).forEach(function (key) {
-    obj[key]
-  })
-})
+const cases = [
+  {
+    name: "for .. in ..",
+    fn: function () {
+      for (var k in obj) {
+        obj[k];
+      }
+    },
+  },
+  {
+    name: "Object.keys",
+    fn: function () {
+      Object.keys(obj).forEach(function (key) {
+        obj[key];
+      });
+    },
+  },
+  {
+    name: "lodash.forEach",
+    fn: function () {
+      _.forEach(obj, function (value, key) {
+        value;
+      });
+    },
+  },
+];
 
-suite.add('lodash.forEach', function () {
-  _.forEach(obj, function (value, key) {
-    value
-  })
-})
-
-suite.on('cycle', function (event) {
-  console.log(String(event.target));
-})
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'));
-  })
-
-suite.run()
+exports = module.exports = { cases };

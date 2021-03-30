@@ -1,20 +1,18 @@
-var _ = require('lodash');
-const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite()
+var _ = require("lodash");
 
-suite.add('Math.random % range', function () {
-  var num = ~~(Math.random() * 1000);
-})
+const cases = [
+  {
+    name: "Math.random % range",
+    fn: function () {
+      var num = ~~(Math.random() * 1000);
+    },
+  },
+  {
+    name: "lodash.random",
+    fn: function () {
+      var num = _.random(1000);
+    },
+  },
+];
 
-suite.add('lodash.random', function () {
-  var num = _.random(1000);
-})
-
-suite.on('cycle', function (event) {
-  console.log(String(event.target));
-})
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'));
-  })
-
-suite.run()
+exports = module.exports = { cases };

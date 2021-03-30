@@ -1,38 +1,42 @@
-const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite()
+var str = "100";
 
-var str = '100';
+const cases = [
+  {
+    name: "+str",
+    fn: function () {
+      var a = +str;
+    },
+  },
+  {
+    name: "~~str",
+    fn: function () {
+      var a = ~~str;
+    },
+  },
+  {
+    name: "Number(str)",
+    fn: function () {
+      var a = Number(str);
+    },
+  },
+  {
+    name: "parseInt(str)",
+    fn: function () {
+      var a = parseInt(str);
+    },
+  },
+  {
+    name: "parseInt(str, 10)",
+    fn: function () {
+      var a = parseInt(str, 10);
+    },
+  },
+  {
+    name: "str - 0",
+    fn: function () {
+      var a = str - 0;
+    },
+  },
+];
 
-suite.add('+str', function () {
-  var a = +str;
-})
-
-suite.add('~~str', function () {
-  var a = ~~str
-})
-
-suite.add('Number(str)', function () {
-  var a = Number(str)
-})
-
-suite.add('parseInt(str)', function () {
-  var a = parseInt(str)
-})
-
-suite.add('parseInt(str, 10)', function () {
-  var a = parseInt(str, 10)
-})
-
-suite.add('str - 0', function () {
-  var a = str - 0
-})
-
-
-suite.on('cycle', function (event) {
-  console.log(String(event.target));
-})
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'));
-  })
-
-suite.run()
+exports = module.exports = { cases };

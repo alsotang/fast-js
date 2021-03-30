@@ -1,36 +1,39 @@
-var _ = require('lodash');
-const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite()
+var _ = require("lodash");
 
+var emptyObj = {};
+var emptyArr = [];
 
-var emptyObj = {}
-var emptyArr = []
+const cases = [
+  {
+    name: "Object.keys().length === 0",
+    fn: function () {
+      var b = Object.keys(emptyObj).length === 0;
+    },
+  },
+  {
+    name: "lodash.isEmpty(obj)",
+    fn: function () {
+      var b = _.isEmpty(emptyObj);
+    },
+  },
+  {
+    name: "JSON.stringify(obj) == {}",
+    fn: function () {
+      var b = JSON.stringify(emptyObj) == "{}";
+    },
+  },
+  {
+    name: "Array.length === 0",
+    fn: function () {
+      var b = emptyArr.length;
+    },
+  },
+  {
+    name: "lodash.isEmpty(arr)",
+    fn: function () {
+      var b = _.isEmpty(emptyArr);
+    },
+  },
+];
 
-suite.add('Object.keys().length === 0', function () {
-  var b = Object.keys(emptyObj).length === 0
-});
-
-suite.add('lodash.isEmpty(obj)', function () {
-  var b = _.isEmpty(emptyObj);
-})
-
-suite.add('JSON.stringify(obj) == {}', function () {
-  var b = JSON.stringify(emptyObj) == '{}';
-})
-
-suite.add('Array.length === 0', function () {
-  var b = emptyArr.length
-})
-
-suite.add('lodash.isEmpty(arr)', function () {
-  var b = _.isEmpty(emptyArr)
-})
-
-suite.on('cycle', function (event) {
-  console.log(String(event.target));
-})
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'));
-  })
-
-suite.run()
+exports = module.exports = { cases };

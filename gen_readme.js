@@ -1,67 +1,63 @@
 #! /usr/bin/env node
 
-var fs = require('fs');
-var pathlib = require('path');
-var _ = require('lodash');
-var execSync = require('child_process').execSync;
-var nodeBin = 'node';
-const qjsBin = 'qjs'
-var multiline = require('multiline');
+const fs = require("fs");
+const pathlib = require("path");
+const _ = require("lodash");
+const execSync = require("child_process").execSync;
+const { run } = require("./run_benchmark");
+const { benchmarkDir, nodejsDistDir, quickjsDistDir } = require("./utils");
 
-var benchmarkDir = pathlib.join(__dirname, 'benchmark');
-const distDir = pathlib.join(__dirname, 'dist')
-var readmeTemplate = _.template(fs.readFileSync(pathlib.join(__dirname, 'README.template.md'), 'utf-8'));
-var readmeLocate = pathlib.join(__dirname, 'README.md');
+const readmeTemplate = _.template(
+  fs.readFileSync(pathlib.join(__dirname, "README.template.md"), "utf-8")
+);
+const readmeLocate = pathlib.join(__dirname, "README.md");
 
-var allBenchmarks = fs.readdirSync(benchmarkDir);
+let allBenchmarks = fs.readdirSync(benchmarkDir);
 allBenchmarks = allBenchmarks.filter(function (filename) {
-  return _.endsWith(filename, '.js');
+  return _.endsWith(filename, ".js");
 });
 
-var benchmarkBlockTemplate = _.template(multiline(function () {
-/*
+const codeBlock = "```";
+const benchmarkBlockTemplate = _.template(String.raw`
 [<%= filename %>](benchmark/<%= filename %>)
 
 
 Node.js output:
 
-```
+${codeBlock}
 <%= nodejs_benchmark_result %>
-```
+${codeBlock}
 
 QuickJS output:
 
-```
+${codeBlock}
 <%= qjs_benchmark_result %>
-```
-*/
-}));
+${codeBlock}
+`);
 
-var result = [];
+async function main() {
+  const result = [];
 
-allBenchmarks.forEach(function (filename) {
-  const benchmarkFile = pathlib.join(benchmarkDir, filename)
-  const benchmarkDistFile = pathlib.join(distDir, filename)
-  console.log(`${nodeBin} ${benchmarkFile}`)
-  var nodejsOutput = execSync(`${nodeBin} ${benchmarkFile}`).toString();
-  console.log(`${qjsBin} ${benchmarkDistFile}`)
-  var qjsOutput = execSync(`${qjsBin} ${benchmarkDistFile}`).toString();
+  for (const srcFilename of allBenchmarks) {
+    const { nodejsOutput, qjsOutput } = await run(srcFilename);
 
-  var bmresult = benchmarkBlockTemplate({
-    filename: filename,
-    nodejs_benchmark_result: nodejsOutput,
-    qjs_benchmark_result: qjsOutput,
+    const bmresult = benchmarkBlockTemplate({
+      filename: srcFilename,
+      nodejs_benchmark_result: nodejsOutput.trim(),
+      qjs_benchmark_result: qjsOutput.trim(),
+    });
+
+    result.push(bmresult);
+  }
+
+  const readmeText = readmeTemplate({
+    benchmark_result: result.join("\n\n"),
+    node_version: process.versions.node,
+    v8_version: process.versions.v8,
+    quickjs_version: execSync("qjs -h | grep version").toString().trim(),
   });
 
-  result.push(bmresult);
-});
+  fs.writeFileSync(readmeLocate, readmeText);
+}
 
-var readmeText = readmeTemplate({
-  benchmark_result: result.join('\n\n'),
-  node_version: process.versions.node,
-  v8_version: process.versions.v8,
-  quickjs_version: execSync('qjs -h | grep version').toString().trim()
-});
-
-fs.writeFileSync(readmeLocate, readmeText);
-
+main();
