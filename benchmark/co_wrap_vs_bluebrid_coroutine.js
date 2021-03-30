@@ -4,28 +4,24 @@ var bluebird = require("bluebird");
 const cases = [
   {
     name: "co.wrap",
-    fn: function (deferred) {
+    fn: function (next) {
       co.wrap(function* () {
         for (var i = 0; i < 1000; i++) {
           yield Promise.resolve(1);
         }
-      })().then(() => {
-        deferred.resolve();
-      });
+      })().then(next);
     },
   },
   {
     name: "bluebird.coroutine",
-    fn: function (deferred) {
+    fn: function (next) {
       bluebird
         .coroutine(function* () {
           for (var i = 0; i < 1000; i++) {
             yield Promise.resolve(1);
           }
         })()
-        .then(() => {
-          deferred.resolve();
-        });
+        .then(next);
     },
   },
 ];

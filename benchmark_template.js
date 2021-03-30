@@ -3,7 +3,18 @@ const suite = new Benchmark.Suite();
 const benchmark = require("{{{benchmark_file}}}");
 
 benchmark.cases.forEach((caseObj) => {
-  suite.add(caseObj.name, caseObj.fn);
+  const isDefer = caseObj.fn.length === 1;
+  suite.add(caseObj.name, function (deferred) {
+    if (!isDefer) {
+      caseObj.fn();
+    } else {
+      caseObj.fn(function () {
+        deferred.resolve();
+      })
+    }
+  }, {
+    defer: isDefer
+  });
 });
 
 suite
