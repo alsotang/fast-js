@@ -1,8 +1,8 @@
 # fast-js
 
-:heart_eyes: Writing fast JavaScript on Node.js or QuickJS
+:heart_eyes: Writing fast JavaScript on Node.js and QuickJS
 
-Here are many benchmark results produced from Node.js or QuickJS runtime.
+Here are many benchmark results produced from Node.js and QuickJS runtime.
 
 # env
 
