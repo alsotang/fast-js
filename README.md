@@ -6,8 +6,8 @@ Here are many benchmark results produced from Node.js and QuickJS runtime.
 
 # env
 
-- Node.js: 14.17.1
-- v8: 8.4.371.23-node.67
+- Node.js: 19.7.0
+- v8: 10.8.168.25-node.11
 - QuickJS: QuickJS version 2021-03-27
 
 # benchmark
@@ -19,22 +19,22 @@ Here are many benchmark results produced from Node.js and QuickJS runtime.
 Node.js output:
 
 ```
-[].slice.apply x 19,320,061 ops/sec ±1.14% (89 runs sampled)
-[].slice.call x 17,898,344 ops/sec ±1.51% (84 runs sampled)
-Array.prototype.slice.apply x 17,744,889 ops/sec ±1.30% (87 runs sampled)
-Array.prototype.slice.call x 18,227,873 ops/sec ±0.96% (89 runs sampled)
-lodash.toArray x 10,599,063 ops/sec ±0.78% (88 runs sampled)
-Fastest is [].slice.apply
+[].slice.apply x 22,420,279 ops/sec ±0.30% (97 runs sampled)
+[].slice.call x 22,448,514 ops/sec ±0.63% (94 runs sampled)
+Array.prototype.slice.apply x 22,692,906 ops/sec ±0.20% (96 runs sampled)
+Array.prototype.slice.call x 22,427,875 ops/sec ±0.47% (96 runs sampled)
+lodash.toArray x 10,996,166 ops/sec ±0.16% (98 runs sampled)
+Fastest is Array.prototype.slice.apply
 ```
 
 QuickJS output:
 
 ```
-[].slice.apply x 772,031 ops/sec ±1.04% (54 runs sampled)
-[].slice.call x 795,961 ops/sec ±0.87% (56 runs sampled)
-Array.prototype.slice.apply x 802,035 ops/sec ±1.19% (56 runs sampled)
-Array.prototype.slice.call x 826,636 ops/sec ±1.29% (58 runs sampled)
-lodash.toArray x 330,078 ops/sec ±1.26% (60 runs sampled)
+[].slice.apply x 940,288 ops/sec ±0.11% (66 runs sampled)
+[].slice.call x 965,813 ops/sec ±0.14% (67 runs sampled)
+Array.prototype.slice.apply x 982,746 ops/sec ±0.16% (67 runs sampled)
+Array.prototype.slice.call x 1,018,669 ops/sec ±0.14% (67 runs sampled)
+lodash.toArray x 417,679 ops/sec ±0.16% (59 runs sampled)
 Fastest is Array.prototype.slice.call
 ```
 
@@ -46,18 +46,18 @@ Fastest is Array.prototype.slice.call
 Node.js output:
 
 ```
-Array.from x 2,654,046 ops/sec ±1.18% (86 runs sampled)
-Set#forEach x 380,830 ops/sec ±1.08% (85 runs sampled)
-arr[index] x 419,387 ops/sec ±1.03% (87 runs sampled)
+Array.from x 3,308,311 ops/sec ±0.30% (97 runs sampled)
+Set#forEach x 682,543 ops/sec ±0.26% (95 runs sampled)
+arr[index] x 790,529 ops/sec ±0.12% (98 runs sampled)
 Fastest is Array.from
 ```
 
 QuickJS output:
 
 ```
-Array.from x 123,614 ops/sec ±1.15% (61 runs sampled)
-Set#forEach x 80,355 ops/sec ±1.02% (62 runs sampled)
-arr[index] x 94,257 ops/sec ±1.13% (60 runs sampled)
+Array.from x 166,771 ops/sec ±0.41% (65 runs sampled)
+Set#forEach x 70,539 ops/sec ±0.35% (64 runs sampled)
+arr[index] x 121,853 ops/sec ±0.40% (64 runs sampled)
 Fastest is Array.from
 ```
 
@@ -69,18 +69,18 @@ Fastest is Array.from
 Node.js output:
 
 ```
-JSON.parse(JSON.stringify) x 297,093 ops/sec ±1.41% (83 runs sampled)
-lodash.cloneDeep x 180,876 ops/sec ±1.76% (86 runs sampled)
-lodash.clone. this is shallow clone x 1,668,539 ops/sec ±1.13% (85 runs sampled)
+JSON.parse(JSON.stringify) x 342,741 ops/sec ±0.24% (95 runs sampled)
+lodash.cloneDeep x 277,438 ops/sec ±0.41% (90 runs sampled)
+lodash.clone. this is shallow clone x 2,263,402 ops/sec ±0.08% (90 runs sampled)
 Fastest is lodash.clone. this is shallow clone
 ```
 
 QuickJS output:
 
 ```
-JSON.parse(JSON.stringify) x 108,481 ops/sec ±0.72% (62 runs sampled)
-lodash.cloneDeep x 18,053 ops/sec ±1.08% (60 runs sampled)
-lodash.clone. this is shallow clone x 204,327 ops/sec ±1.67% (60 runs sampled)
+JSON.parse(JSON.stringify) x 124,549 ops/sec ±0.20% (61 runs sampled)
+lodash.cloneDeep x 21,672 ops/sec ±0.91% (67 runs sampled)
+lodash.clone. this is shallow clone x 252,017 ops/sec ±0.19% (67 runs sampled)
 Fastest is lodash.clone. this is shallow clone
 ```
 
@@ -92,16 +92,16 @@ Fastest is lodash.clone. this is shallow clone
 Node.js output:
 
 ```
-co.wrap x 6,568 ops/sec ±1.34% (77 runs sampled)
-bluebird.coroutine x 66.56 ops/sec ±1.24% (78 runs sampled)
+co.wrap x 9,849 ops/sec ±0.44% (87 runs sampled)
+bluebird.coroutine x 82.25 ops/sec ±0.48% (79 runs sampled)
 Fastest is co.wrap
 ```
 
 QuickJS output:
 
 ```
-co.wrap x 289 ops/sec ±1.02% (59 runs sampled)
-bluebird.coroutine x 62.47 ops/sec ±1.04% (53 runs sampled)
+co.wrap x 353 ops/sec ±0.19% (63 runs sampled)
+bluebird.coroutine x 76.83 ops/sec ±0.15% (62 runs sampled)
 Fastest is co.wrap
 ```
 
@@ -113,20 +113,20 @@ Fastest is co.wrap
 Node.js output:
 
 ```
-normal for loop. i < arr.length x 16,642 ops/sec ±1.15% (86 runs sampled)
-normal for loop. cache arr.length x 17,246 ops/sec ±1.09% (86 runs sampled)
-native forEach x 580 ops/sec ±1.14% (86 runs sampled)
-lodash.forEach x 607 ops/sec ±1.56% (84 runs sampled)
-Fastest is normal for loop. cache arr.length
+normal for loop. i < arr.length x 16,533 ops/sec ±0.06% (98 runs sampled)
+normal for loop. cache arr.length x 16,539 ops/sec ±0.03% (100 runs sampled)
+native forEach x 951 ops/sec ±0.13% (94 runs sampled)
+lodash.forEach x 1,044 ops/sec ±0.25% (96 runs sampled)
+Fastest is normal for loop. cache arr.length,normal for loop. i < arr.length
 ```
 
 QuickJS output:
 
 ```
-normal for loop. i < arr.length x 283 ops/sec ±1.66% (56 runs sampled)
-normal for loop. cache arr.length x 407 ops/sec ±1.06% (59 runs sampled)
-native forEach x 191 ops/sec ±1.17% (50 runs sampled)
-lodash.forEach x 146 ops/sec ±0.83% (57 runs sampled)
+normal for loop. i < arr.length x 323 ops/sec ±0.15% (63 runs sampled)
+normal for loop. cache arr.length x 422 ops/sec ±0.17% (65 runs sampled)
+native forEach x 236 ops/sec ±0.19% (61 runs sampled)
+lodash.forEach x 165 ops/sec ±0.22% (61 runs sampled)
 Fastest is normal for loop. cache arr.length
 ```
 
@@ -138,16 +138,16 @@ Fastest is normal for loop. cache arr.length
 Node.js output:
 
 ```
-withoutHiddenClass x 665,428,110 ops/sec ±0.77% (91 runs sampled)
-withHiddenClass x 663,730,165 ops/sec ±0.74% (87 runs sampled)
-Fastest is withoutHiddenClass,withHiddenClass
+withoutHiddenClass x 593,008,455 ops/sec ±0.33% (96 runs sampled)
+withHiddenClass x 592,211,394 ops/sec ±0.09% (97 runs sampled)
+Fastest is withHiddenClass
 ```
 
 QuickJS output:
 
 ```
-withoutHiddenClass x 1,351,360 ops/sec ±0.93% (63 runs sampled)
-withHiddenClass x 1,215,558 ops/sec ±1.18% (60 runs sampled)
+withoutHiddenClass x 1,558,953 ops/sec ±0.27% (67 runs sampled)
+withHiddenClass x 1,450,963 ops/sec ±0.31% (67 runs sampled)
 Fastest is withoutHiddenClass
 ```
 
@@ -159,16 +159,16 @@ Fastest is withoutHiddenClass
 Node.js output:
 
 ```
-inner x 796,008,322 ops/sec ±1.16% (88 runs sampled)
-outter x 777,212,048 ops/sec ±1.08% (86 runs sampled)
-Fastest is inner
+inner x 588,177,701 ops/sec ±0.29% (95 runs sampled)
+outter x 590,210,535 ops/sec ±0.11% (98 runs sampled)
+Fastest is outter
 ```
 
 QuickJS output:
 
 ```
-inner x 1,942,320 ops/sec ±0.94% (62 runs sampled)
-outter x 5,276,139 ops/sec ±0.87% (62 runs sampled)
+inner x 2,111,907 ops/sec ±0.15% (66 runs sampled)
+outter x 6,111,227 ops/sec ±0.23% (55 runs sampled)
 Fastest is outter
 ```
 
@@ -180,22 +180,22 @@ Fastest is outter
 Node.js output:
 
 ```
-Object.keys().length === 0 x 82,429,061 ops/sec ±1.00% (86 runs sampled)
-lodash.isEmpty(obj) x 14,393,601 ops/sec ±2.29% (88 runs sampled)
-JSON.stringify(obj) == {} x 5,316,100 ops/sec ±0.95% (88 runs sampled)
-Array.length === 0 x 790,416,772 ops/sec ±1.05% (91 runs sampled)
-lodash.isEmpty(arr) x 14,881,778 ops/sec ±2.26% (88 runs sampled)
+Object.keys().length === 0 x 102,582,561 ops/sec ±0.76% (93 runs sampled)
+lodash.isEmpty(obj) x 16,100,344 ops/sec ±0.23% (98 runs sampled)
+JSON.stringify(obj) == {} x 9,652,633 ops/sec ±0.20% (96 runs sampled)
+Array.length === 0 x 590,246,087 ops/sec ±0.31% (98 runs sampled)
+lodash.isEmpty(arr) x 16,212,321 ops/sec ±0.21% (98 runs sampled)
 Fastest is Array.length === 0
 ```
 
 QuickJS output:
 
 ```
-Object.keys().length === 0 x 2,894,837 ops/sec ±0.78% (62 runs sampled)
-lodash.isEmpty(obj) x 731,788 ops/sec ±0.93% (62 runs sampled)
-JSON.stringify(obj) == {} x 992,498 ops/sec ±1.41% (62 runs sampled)
-Array.length === 0 x 7,018,833 ops/sec ±1.48% (61 runs sampled)
-lodash.isEmpty(arr) x 794,881 ops/sec ±1.08% (56 runs sampled)
+Object.keys().length === 0 x 3,516,456 ops/sec ±0.19% (65 runs sampled)
+lodash.isEmpty(obj) x 848,532 ops/sec ±0.17% (60 runs sampled)
+JSON.stringify(obj) == {} x 1,044,491 ops/sec ±0.09% (68 runs sampled)
+Array.length === 0 x 8,692,101 ops/sec ±0.45% (67 runs sampled)
+lodash.isEmpty(arr) x 989,557 ops/sec ±0.14% (66 runs sampled)
 Fastest is Array.length === 0
 ```
 
@@ -207,18 +207,18 @@ Fastest is Array.length === 0
 Node.js output:
 
 ```
-for .. in .. x 68,432,012 ops/sec ±0.86% (86 runs sampled)
-Object.keys x 9,196,016 ops/sec ±1.60% (87 runs sampled)
-lodash.forEach x 4,416,200 ops/sec ±1.16% (87 runs sampled)
+for .. in .. x 88,202,202 ops/sec ±0.55% (92 runs sampled)
+Object.keys x 10,296,848 ops/sec ±0.22% (94 runs sampled)
+lodash.forEach x 6,293,506 ops/sec ±0.25% (98 runs sampled)
 Fastest is for .. in ..
 ```
 
 QuickJS output:
 
 ```
-for .. in .. x 617,355 ops/sec ±1.18% (60 runs sampled)
-Object.keys x 454,166 ops/sec ±0.96% (63 runs sampled)
-lodash.forEach x 235,672 ops/sec ±1.11% (61 runs sampled)
+for .. in .. x 718,486 ops/sec ±0.29% (66 runs sampled)
+Object.keys x 516,502 ops/sec ±0.14% (67 runs sampled)
+lodash.forEach x 264,105 ops/sec ±0.13% (66 runs sampled)
 Fastest is for .. in ..
 ```
 
@@ -230,23 +230,23 @@ Fastest is for .. in ..
 Node.js output:
 
 ```
-normal loop. use push x 483 ops/sec ±2.19% (77 runs sampled)
-normal loop. use index x 529 ops/sec ±1.50% (87 runs sampled)
-new Array(arr.length) x 1,533 ops/sec ±1.51% (84 runs sampled)
-native map x 408 ops/sec ±1.11% (84 runs sampled)
-lodash.forEach x 436 ops/sec ±0.99% (86 runs sampled)
+normal loop. use push x 494 ops/sec ±0.67% (88 runs sampled)
+normal loop. use index x 522 ops/sec ±0.54% (91 runs sampled)
+new Array(arr.length) x 1,474 ops/sec ±0.23% (94 runs sampled)
+native map x 526 ops/sec ±0.53% (91 runs sampled)
+lodash.forEach x 622 ops/sec ±0.62% (91 runs sampled)
 Fastest is new Array(arr.length)
 ```
 
 QuickJS output:
 
 ```
-normal loop. use push x 82.88 ops/sec ±0.79% (54 runs sampled)
-normal loop. use index x 107 ops/sec ±1.50% (55 runs sampled)
-new Array(arr.length) x 113 ops/sec ±0.80% (53 runs sampled)
-native map x 82.87 ops/sec ±1.40% (53 runs sampled)
-lodash.forEach x 90.60 ops/sec ±1.19% (52 runs sampled)
-Fastest is new Array(arr.length)
+normal loop. use push x 66.62 ops/sec ±0.71% (50 runs sampled)
+normal loop. use index x 127 ops/sec ±0.28% (59 runs sampled)
+new Array(arr.length) x 125 ops/sec ±0.28% (58 runs sampled)
+native map x 104 ops/sec ±0.19% (60 runs sampled)
+lodash.forEach x 107 ops/sec ±0.29% (56 runs sampled)
+Fastest is normal loop. use index
 ```
 
 
@@ -257,20 +257,20 @@ Fastest is new Array(arr.length)
 Node.js output:
 
 ```
-new Array() x 801,527,418 ops/sec ±0.98% (88 runs sampled)
-[] x 802,061,248 ops/sec ±0.91% (86 runs sampled)
-[] and assign x 47.00 ops/sec ±2.57% (60 runs sampled)
-new Array(length) and assign x 305 ops/sec ±1.56% (84 runs sampled)
-Fastest is [],new Array()
+new Array() x 588,630,799 ops/sec ±0.53% (92 runs sampled)
+[] x 591,918,305 ops/sec ±0.10% (98 runs sampled)
+[] and assign x 52.80 ops/sec ±1.42% (68 runs sampled)
+new Array(length) and assign x 316 ops/sec ±0.63% (89 runs sampled)
+Fastest is []
 ```
 
 QuickJS output:
 
 ```
-new Array() x 2,614,336 ops/sec ±1.50% (59 runs sampled)
-[] x 4,526,103 ops/sec ±0.98% (61 runs sampled)
-[] and assign x 31.79 ops/sec ±1.38% (43 runs sampled)
-new Array(length) and assign x 32.80 ops/sec ±1.42% (44 runs sampled)
+new Array() x 3,210,533 ops/sec ±0.20% (66 runs sampled)
+[] x 5,612,233 ops/sec ±0.19% (66 runs sampled)
+[] and assign x 34.52 ops/sec ±0.56% (46 runs sampled)
+new Array(length) and assign x 35.21 ops/sec ±0.33% (47 runs sampled)
 Fastest is []
 ```
 
@@ -282,22 +282,22 @@ Fastest is []
 Node.js output:
 
 ```
-native `new promise` x 7,045,484 ops/sec ±1.56% (79 runs sampled)
-bluebird `new promise` x 5,964 ops/sec ±1.18% (83 runs sampled)
-native promise.resolve x 8,685,530 ops/sec ±1.28% (82 runs sampled)
-bluebird promise.resolve x 6,117 ops/sec ±1.02% (83 runs sampled)
-co x 375,123 ops/sec ±1.99% (81 runs sampled)
+native `new promise` x 8,698,650 ops/sec ±0.67% (88 runs sampled)
+bluebird `new promise` x 15,615 ops/sec ±0.39% (84 runs sampled)
+native promise.resolve x 11,007,499 ops/sec ±0.53% (86 runs sampled)
+bluebird promise.resolve x 15,961 ops/sec ±0.31% (89 runs sampled)
+co x 494,601 ops/sec ±0.85% (88 runs sampled)
 Fastest is native promise.resolve
 ```
 
 QuickJS output:
 
 ```
-native `new promise` x 263,275 ops/sec ±0.98% (60 runs sampled)
-bluebird `new promise` x 72,266 ops/sec ±1.48% (58 runs sampled)
-native promise.resolve x 274,944 ops/sec ±1.03% (55 runs sampled)
-bluebird promise.resolve x 88,974 ops/sec ±1.73% (59 runs sampled)
-co x 94,169 ops/sec ±1.20% (56 runs sampled)
+native `new promise` x 295,727 ops/sec ±0.22% (59 runs sampled)
+bluebird `new promise` x 88,457 ops/sec ±0.14% (64 runs sampled)
+native promise.resolve x 300,930 ops/sec ±0.20% (64 runs sampled)
+bluebird promise.resolve x 104,206 ops/sec ±0.19% (64 runs sampled)
+co x 110,070 ops/sec ±0.69% (60 runs sampled)
 Fastest is native promise.resolve
 ```
 
@@ -309,20 +309,20 @@ Fastest is native promise.resolve
 Node.js output:
 
 ```
-number index `1` x 275 ops/sec ±0.90% (85 runs sampled)
-string index `1` x 281 ops/sec ±1.03% (82 runs sampled)
-dot index `b` x 281 ops/sec ±1.23% (82 runs sampled)
-string index `b` x 282 ops/sec ±0.79% (84 runs sampled)
-Fastest is string index `b`,dot index `b`,string index `1`
+number index `1` x 249 ops/sec ±0.02% (90 runs sampled)
+string index `1` x 249 ops/sec ±0.02% (90 runs sampled)
+dot index `b` x 249 ops/sec ±0.01% (90 runs sampled)
+string index `b` x 249 ops/sec ±0.01% (90 runs sampled)
+Fastest is string index `b`,dot index `b`,number index `1`
 ```
 
 QuickJS output:
 
 ```
-number index `1` x 3.26 ops/sec ±1.56% (13 runs sampled)
-string index `1` x 2.54 ops/sec ±2.70% (11 runs sampled)
-dot index `b` x 4.25 ops/sec ±1.52% (15 runs sampled)
-string index `b` x 2.16 ops/sec ±1.95% (10 runs sampled)
+number index `1` x 3.83 ops/sec ±0.44% (14 runs sampled)
+string index `1` x 3.09 ops/sec ±0.19% (12 runs sampled)
+dot index `b` x 4.38 ops/sec ±0.14% (15 runs sampled)
+string index `b` x 2.64 ops/sec ±0.36% (11 runs sampled)
 Fastest is dot index `b`
 ```
 
@@ -334,16 +334,16 @@ Fastest is dot index `b`
 Node.js output:
 
 ```
-Math.random % range x 77,858,973 ops/sec ±2.48% (87 runs sampled)
-lodash.random x 51,074,153 ops/sec ±0.87% (88 runs sampled)
+Math.random % range x 88,586,385 ops/sec ±0.30% (95 runs sampled)
+lodash.random x 58,950,769 ops/sec ±0.25% (94 runs sampled)
 Fastest is Math.random % range
 ```
 
 QuickJS output:
 
 ```
-Math.random % range x 4,241,712 ops/sec ±1.00% (39 runs sampled)
-lodash.random x 1,318,269 ops/sec ±1.14% (61 runs sampled)
+Math.random % range x 5,507,277 ops/sec ±0.32% (66 runs sampled)
+lodash.random x 1,728,663 ops/sec ±0.14% (67 runs sampled)
 Fastest is Math.random % range
 ```
 
@@ -355,20 +355,20 @@ Fastest is Math.random % range
 Node.js output:
 
 ```
-String.match x 16,980,223 ops/sec ±1.05% (87 runs sampled)
-Regex.exec x 18,016,636 ops/sec ±1.88% (89 runs sampled)
-String.search x 25,849,549 ops/sec ±0.95% (90 runs sampled)
-test x 32,086,417 ops/sec ±2.23% (87 runs sampled)
+String.match x 22,361,873 ops/sec ±0.23% (97 runs sampled)
+Regex.exec x 24,495,232 ops/sec ±0.26% (95 runs sampled)
+String.search x 32,979,505 ops/sec ±0.12% (98 runs sampled)
+test x 41,783,349 ops/sec ±0.93% (98 runs sampled)
 Fastest is test
 ```
 
 QuickJS output:
 
 ```
-String.match x 745,217 ops/sec ±1.29% (53 runs sampled)
-Regex.exec x 923,537 ops/sec ±1.01% (62 runs sampled)
-String.search x 752,152 ops/sec ±0.82% (53 runs sampled)
-test x 801,094 ops/sec ±0.93% (56 runs sampled)
+String.match x 851,659 ops/sec ±0.13% (67 runs sampled)
+Regex.exec x 1,054,563 ops/sec ±0.18% (66 runs sampled)
+String.search x 845,103 ops/sec ±0.17% (60 runs sampled)
+test x 969,057 ops/sec ±0.27% (67 runs sampled)
 Fastest is Regex.exec
 ```
 
@@ -380,16 +380,16 @@ Fastest is Regex.exec
 Node.js output:
 
 ```
-Math.random % arr.length x 61,992,646 ops/sec ±2.74% (80 runs sampled)
-lodash.sample x 61,958,684 ops/sec ±0.83% (85 runs sampled)
-Fastest is lodash.sample
+Math.random % arr.length x 77,100,706 ops/sec ±0.40% (94 runs sampled)
+lodash.sample x 75,686,572 ops/sec ±0.22% (96 runs sampled)
+Fastest is Math.random % arr.length
 ```
 
 QuickJS output:
 
 ```
-Math.random % arr.length x 3,837,031 ops/sec ±0.98% (58 runs sampled)
-lodash.sample x 2,224,138 ops/sec ±1.04% (59 runs sampled)
+Math.random % arr.length x 4,707,656 ops/sec ±0.11% (67 runs sampled)
+lodash.sample x 2,770,724 ops/sec ±0.28% (67 runs sampled)
 Fastest is Math.random % arr.length
 ```
 
@@ -401,18 +401,18 @@ Fastest is Math.random % arr.length
 Node.js output:
 
 ```
-regex /^ab/ x 28,870,028 ops/sec ±1.11% (86 runs sampled)
-indexOf === 0 x 778,916,970 ops/sec ±1.17% (88 runs sampled)
-lodash.startsWith x 723,862,296 ops/sec ±2.01% (84 runs sampled)
+regex /^ab/ x 36,988,104 ops/sec ±0.24% (95 runs sampled)
+indexOf === 0 x 591,613,760 ops/sec ±0.16% (96 runs sampled)
+lodash.startsWith x 586,243,127 ops/sec ±0.15% (94 runs sampled)
 Fastest is indexOf === 0
 ```
 
 QuickJS output:
 
 ```
-regex /^ab/ x 739,019 ops/sec ±0.89% (62 runs sampled)
-indexOf === 0 x 4,663,773 ops/sec ±1.59% (43 runs sampled)
-lodash.startsWith x 1,487,754 ops/sec ±1.08% (62 runs sampled)
+regex /^ab/ x 839,571 ops/sec ±0.18% (67 runs sampled)
+indexOf === 0 x 5,899,069 ops/sec ±0.24% (53 runs sampled)
+lodash.startsWith x 1,990,439 ops/sec ±0.18% (66 runs sampled)
 Fastest is indexOf === 0
 ```
 
@@ -424,20 +424,20 @@ Fastest is indexOf === 0
 Node.js output:
 
 ```
-+ x 778,871,466 ops/sec ±0.78% (87 runs sampled)
-+= x 766,641,506 ops/sec ±1.00% (87 runs sampled)
-arr.join('') x 4,316,261 ops/sec ±1.34% (86 runs sampled)
-str.concat x 772,251,263 ops/sec ±0.96% (87 runs sampled)
-Fastest is +,str.concat
++ x 589,022,865 ops/sec ±0.49% (95 runs sampled)
++= x 590,854,420 ops/sec ±0.13% (96 runs sampled)
+arr.join('') x 6,150,158 ops/sec ±0.34% (97 runs sampled)
+str.concat x 590,290,792 ops/sec ±0.12% (97 runs sampled)
+Fastest is +=,str.concat,+
 ```
 
 QuickJS output:
 
 ```
-+ x 3,505,459 ops/sec ±1.40% (61 runs sampled)
-+= x 2,860,511 ops/sec ±1.84% (51 runs sampled)
-arr.join('') x 1,119,723 ops/sec ±1.22% (56 runs sampled)
-str.concat x 3,219,941 ops/sec ±1.17% (60 runs sampled)
++ x 4,568,997 ops/sec ±1.29% (64 runs sampled)
++= x 3,306,686 ops/sec ±0.93% (59 runs sampled)
+arr.join('') x 1,306,007 ops/sec ±0.98% (60 runs sampled)
+str.concat x 4,083,164 ops/sec ±0.92% (65 runs sampled)
 Fastest is +
 ```
 
@@ -449,24 +449,24 @@ Fastest is +
 Node.js output:
 
 ```
-+str x 779,244,777 ops/sec ±1.05% (88 runs sampled)
-~~str x 785,336,866 ops/sec ±0.73% (89 runs sampled)
-Number(str) x 779,147,219 ops/sec ±0.87% (89 runs sampled)
-parseInt(str) x 160,770,469 ops/sec ±0.98% (88 runs sampled)
-parseInt(str, 10) x 154,054,526 ops/sec ±1.01% (89 runs sampled)
-str - 0 x 746,069,914 ops/sec ±0.69% (86 runs sampled)
-Fastest is ~~str,Number(str),+str
++str x 591,555,625 ops/sec ±0.16% (97 runs sampled)
+~~str x 591,189,893 ops/sec ±0.09% (98 runs sampled)
+Number(str) x 590,851,241 ops/sec ±0.19% (97 runs sampled)
+parseInt(str) x 215,256,987 ops/sec ±0.44% (94 runs sampled)
+parseInt(str, 10) x 203,432,942 ops/sec ±0.37% (93 runs sampled)
+str - 0 x 591,344,941 ops/sec ±0.14% (97 runs sampled)
+Fastest is ~~str,str - 0,Number(str)
 ```
 
 QuickJS output:
 
 ```
-+str x 4,556,156 ops/sec ±1.31% (42 runs sampled)
-~~str x 4,373,560 ops/sec ±0.93% (60 runs sampled)
-Number(str) x 3,639,377 ops/sec ±0.86% (59 runs sampled)
-parseInt(str) x 3,704,999 ops/sec ±0.84% (61 runs sampled)
-parseInt(str, 10) x 3,981,940 ops/sec ±0.80% (61 runs sampled)
-str - 0 x 4,220,367 ops/sec ±0.83% (63 runs sampled)
++str x 6,245,957 ops/sec ±0.12% (64 runs sampled)
+~~str x 5,853,389 ops/sec ±0.15% (65 runs sampled)
+Number(str) x 4,878,886 ops/sec ±0.34% (45 runs sampled)
+parseInt(str) x 4,762,535 ops/sec ±0.22% (44 runs sampled)
+parseInt(str, 10) x 5,173,711 ops/sec ±0.12% (66 runs sampled)
+str - 0 x 5,991,062 ops/sec ±0.15% (67 runs sampled)
 Fastest is +str
 ```
 
@@ -478,21 +478,21 @@ Fastest is +str
 Node.js output:
 
 ```
-JSON.parse with try catch x 39,413 ops/sec ±0.73% (87 runs sampled)
-JSON.parse without try catch x 39,867 ops/sec ±1.04% (85 runs sampled)
-for loop with try catch x 422 ops/sec ±1.08% (78 runs sampled)
-for loop without try catch x 422 ops/sec ±1.10% (84 runs sampled)
-Fastest is JSON.parse without try catch
+JSON.parse with try catch x 57,243 ops/sec ±0.35% (95 runs sampled)
+JSON.parse without try catch x 57,092 ops/sec ±0.10% (94 runs sampled)
+for loop with try catch x 531 ops/sec ±0.74% (87 runs sampled)
+for loop without try catch x 531 ops/sec ±0.70% (87 runs sampled)
+Fastest is JSON.parse with try catch
 ```
 
 QuickJS output:
 
 ```
-JSON.parse with try catch x 9,470 ops/sec ±1.24% (61 runs sampled)
-JSON.parse without try catch x 9,598 ops/sec ±0.81% (51 runs sampled)
-for loop with try catch x 300 ops/sec ±1.13% (58 runs sampled)
-for loop without try catch x 303 ops/sec ±0.95% (59 runs sampled)
-Fastest is JSON.parse without try catch,JSON.parse with try catch
+JSON.parse with try catch x 11,669 ops/sec ±0.21% (61 runs sampled)
+JSON.parse without try catch x 11,718 ops/sec ±0.17% (62 runs sampled)
+for loop with try catch x 356 ops/sec ±0.22% (65 runs sampled)
+for loop without try catch x 353 ops/sec ±0.31% (64 runs sampled)
+Fastest is JSON.parse without try catch
 ```
 
 
@@ -503,18 +503,18 @@ Fastest is JSON.parse without try catch,JSON.parse with try catch
 Node.js output:
 
 ```
-obj[key] = true x 28,091 ops/sec ±1.12% (81 runs sampled)
-lodash.uniq x 29,134 ops/sec ±0.94% (87 runs sampled)
-Set x 30,827 ops/sec ±0.74% (87 runs sampled)
-Fastest is Set
+obj[key] = true x 44,707 ops/sec ±0.29% (95 runs sampled)
+lodash.uniq x 40,612 ops/sec ±0.11% (96 runs sampled)
+Set x 42,079 ops/sec ±0.26% (97 runs sampled)
+Fastest is obj[key] = true
 ```
 
 QuickJS output:
 
 ```
-obj[key] = true x 10,027 ops/sec ±1.01% (53 runs sampled)
-lodash.uniq x 5,894 ops/sec ±13.65% (33 runs sampled)
-Set x 5,408 ops/sec ±20.57% (31 runs sampled)
+obj[key] = true x 12,533 ops/sec ±0.37% (65 runs sampled)
+lodash.uniq x 7,176 ops/sec ±12.43% (41 runs sampled)
+Set x 7,097 ops/sec ±13.45% (40 runs sampled)
 Fastest is obj[key] = true
 ```
 
@@ -526,18 +526,18 @@ Fastest is obj[key] = true
 Node.js output:
 
 ```
-util.format x 981,252 ops/sec ±0.98% (89 runs sampled)
-str.replace x 5,637,305 ops/sec ±0.88% (86 runs sampled)
-custom fn x 759,769,801 ops/sec ±0.89% (87 runs sampled)
+util.format x 870,369 ops/sec ±0.27% (96 runs sampled)
+str.replace x 8,062,080 ops/sec ±0.25% (95 runs sampled)
+custom fn x 590,969,343 ops/sec ±0.10% (97 runs sampled)
 Fastest is custom fn
 ```
 
 QuickJS output:
 
 ```
-util.format x 129,266 ops/sec ±1.10% (62 runs sampled)
-str.replace x 1,340,245 ops/sec ±0.80% (64 runs sampled)
-custom fn x 3,159,987 ops/sec ±0.86% (61 runs sampled)
+util.format x 149,700 ops/sec ±0.15% (66 runs sampled)
+str.replace x 1,688,493 ops/sec ±0.60% (66 runs sampled)
+custom fn x 3,810,283 ops/sec ±0.28% (65 runs sampled)
 Fastest is custom fn
 ```
 
@@ -549,18 +549,18 @@ Fastest is custom fn
 Node.js output:
 
 ```
-yield x 295 ops/sec ±1.99% (80 runs sampled)
-yield* x 151 ops/sec ±1.62% (75 runs sampled)
-closure x 3,326 ops/sec ±0.91% (90 runs sampled)
+yield x 399 ops/sec ±0.30% (91 runs sampled)
+yield* x 189 ops/sec ±0.86% (87 runs sampled)
+closure x 2,960 ops/sec ±0.03% (99 runs sampled)
 Fastest is closure
 ```
 
 QuickJS output:
 
 ```
-yield x 26.70 ops/sec ±1.20% (37 runs sampled)
-yield* x 20.04 ops/sec ±1.21% (37 runs sampled)
-closure x 156 ops/sec ±0.86% (57 runs sampled)
+yield x 33.38 ops/sec ±0.26% (45 runs sampled)
+yield* x 25.81 ops/sec ±0.27% (46 runs sampled)
+closure x 186 ops/sec ±0.29% (60 runs sampled)
 Fastest is closure
 ```
 
